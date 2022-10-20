@@ -44,6 +44,23 @@ def play_game():
             if score:
                 return score
 
+def lose_game():
+    bingos, num_boards = set(), len(boards)
+    for draw in draws:
+        for i, board in enumerate(boards):
+            if i not in bingos:
+                score = board.check_for_match(draw)
+                if score:
+                    bingos.add(i)
+                if len(bingos) == num_boards:
+                    return score
+              
+
+
+
 
 #Part 1 // CORRECT ⭐️
 print(f'PART 1: {play_game()}')
+
+#Part 2 // CORRECT ⭐️
+print(f'PART 2: {lose_game()}')
